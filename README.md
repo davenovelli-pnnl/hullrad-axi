@@ -9,12 +9,13 @@ includes the unmodified HullRad script and its NumPy and SciPy dependencies.
 ## Install
 
 ```sh
-npm install -g --install-links github:davenovelli-pnnl/hullrad-axi
+npm install -g --install-links --allow-scripts=github:davenovelli-pnnl/hullrad-axi github:davenovelli-pnnl/hullrad-axi
 hullrad-axi --version
 ```
 
 `--install-links` makes npm copy the GitHub package instead of linking a
-temporary checkout.
+temporary checkout. `--allow-scripts` explicitly permits this GitHub package's
+Python setup script, so npm does not issue an unreviewed-script warning.
 
 Requires Node 20+ and network access during installation. The installer checks
 a pinned uv download from Astral, then uv provisions Python 3.11 and installs
@@ -111,6 +112,15 @@ Standard output, including errors, is TOON. Exit codes are `0` for success,
 `1` for errors, and `2` for usage errors. Record directories must be new;
 existing records are never overwritten. The manifest records the structure and
 engine hashes, results, runtime, and selected Python interpreter.
+
+## Uninstall
+
+```sh
+npm uninstall -g hullrad-axi
+```
+
+This removes the command, the package, and its package-local uv and Python
+environments. No uninstall script is needed.
 
 ## Development
 
